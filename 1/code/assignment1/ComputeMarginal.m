@@ -27,7 +27,16 @@ end
 % Remember to renormalize the entries of M!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-M = struct('var', [], 'card', [], 'val', []); % Returns empty factor. Change this.
-
+% M = struct('var', [], 'card', [], 'val', []); % Returns empty factor. Change this.
+% 1. Set unwanted assignment to 0
+F = ObserveEvidence(F, E);
+% 2. Then compute the joint
+joint = ComputeJointDistribution(F);
+% 3. Here the previous V is the variable we want to keep,
+% but FactorMarginalization accept joint.var - V instead.
+V = setdiff(joint.var, V);
+M = FactorMarginalization(joint, V);
+% 4. Normalize the probability.
+M.val /= sum(M.val);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end

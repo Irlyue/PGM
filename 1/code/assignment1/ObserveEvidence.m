@@ -39,7 +39,14 @@ for i = 1:size(E, 1),
             % Hint: You might find it helpful to use IndexToAssignment
             %       and SetValueOfAssignment
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            
+            % first compute all assignments
+            indxJ = IndexToAssignment(1:prod(F(j).card), F(j).card);
+            % pick out the index whose value is not x
+            okIdx = find(indxJ(:, indx) != x);
+            % pick out the assignment
+            a = indxJ(okIdx, :);
+            % set all unwanted assignment to 0
+            F(j) = SetValueOfAssignment(F(j), a, 0);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 				% Check validity of evidence / resulting factor

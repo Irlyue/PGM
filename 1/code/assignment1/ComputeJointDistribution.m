@@ -25,8 +25,12 @@ function Joint = ComputeJointDistribution(F)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-Joint = struct('var', [], 'card', [], 'val', []); % Returns empty factor. Change this.
-
+% Joint = struct('var', [], 'card', [], 'val', []); % Returns empty factor. Change this.
+Joint = F(1);
+n = length(F);
+for i = 2:n
+	Joint = FactorProduct(Joint, F(i));
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
 

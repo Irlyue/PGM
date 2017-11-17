@@ -27,7 +27,6 @@ else
     end;
     indx = AssignmentToIndex(A(map), F.card);
 end;
-
 F.val(indx) = v;
 
 end

@@ -1,3 +1,3 @@
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cp $DIR/lib_patch/*.m ./lib/
-cp $DIR/lib_patch/jsonlab/*.m ./lib/jsonlab/
+# remember to run the script inside assignment directory
+cp ../lib_patch/*.m ./lib/
+cp ../lib_patch/jsonlab/*.m ./lib/jsonlab/
